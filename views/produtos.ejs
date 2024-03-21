@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header class="header">
+        <a href="/">Cadastro de Produtos</a>
+        <a href="/produtos">Lista de Produtos</a>
+    </header>
+    <h1 class="page-title">Lista de Produtos</h1>
+    <div class="produtos-container">
+        <% produtos.forEach(produto => { %>
+            <div class="produto">
+                <strong>Código:</strong> <%= produto.codigo %><br>
+                <strong>Comentários:</strong>
+                <% if (produto.comentarios.length > 0) { %>
+                    <% produto.comentarios.forEach(comentario => { %>
+                        <%= comentario %><br>
+                    <% }); %>
+                <% } else { %>
+                    <em>Nenhum comentário disponível</em><br>
+                <% } %>
+                <strong>Altura:</strong> <%= produto.altura %> cm<br>
+                <strong>Largura:</strong> <%= produto.largura %> cm<br>
+                <strong>Profundidade:</strong> <%= produto.profundidade %> cm<br>
+                <div class="form-actions">
+                    </form>
+                    <form action="/adicionar-comentario/<%= produto.id %>" method="GET">
+                        <input type="submit" value="Adicionar Comentário" class="add-comment-button">
+                    </form>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+    <footer class="footer">
+        <p><span class="footer-text"></span>Desenvolvido por Pedro Augusto Schlemper &copy; 2024</span></p>
+    </footer>
+</body>
+</html>
